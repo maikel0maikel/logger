@@ -5,25 +5,28 @@ Android开发者的日志工具。
 日志可以打印出哪个线程哪个类哪行打印的
 使用：
 一、在根目录的build.gradle里添加仓库。
-
+```groovy
 allprojects {
  repositories {
    maven {
             url "https://raw.githubusercontent.com/maikel0maikel/logger/master"
          }
  }
-
+```
 二、在模块的build.gradle中添加依赖。
 
 studio3.0以下
+```groovy
 dependencies {
      compile 'com.sinohb:logger:1.0'
 }
+```
  studio3.0以上（含3.0）
+ ```groovy
  dependencies {
       implementation 'com.sinohb:logger:1.0'
  }
-
+```
 
 三、 配置与初始化
 
