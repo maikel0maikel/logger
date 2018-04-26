@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+android {
+    compileSdkVersion 23
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+}
+
+
+
+
+uploadArchives{
+    repositories.mavenDeployer {
+        def mavenRepositoryPath = file(getProperty('aar.logger'))
+        repository(url: "file://${mavenRepositoryPath.absolutePath}")
+
+        pom.project {
+            groupId "com.sinohb.library" //groupId:artifactId:version
+            artifactId "logger" //LibA
+            version "1.0"
+        }
+    }
+}
