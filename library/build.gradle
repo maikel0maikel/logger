@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
 android {
     compileSdkVersion 23
 
@@ -29,6 +28,7 @@ dependencies {
 }
 
 
+apply plugin: 'maven'
 
 
 uploadArchives{
@@ -37,7 +37,7 @@ uploadArchives{
         repository(url: "file://${mavenRepositoryPath.absolutePath}")
 
         pom.project {
-            groupId "com.sinohb.library" //groupId:artifactId:version
+            groupId "com.sinohb" //groupId:artifactId:version
             artifactId "logger" //LibA
             version "1.0"
         }
