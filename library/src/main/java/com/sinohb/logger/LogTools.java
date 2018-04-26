@@ -9,18 +9,18 @@ public class LogTools {
     static {
         if (SystemApplication.getContext() == null) {
             logger = Logger.Builder.newBuilder("HBLog").setDebug(true)
-                    .setLogDir("HBApplication")
+                    .setLogDir("HBDvrVideoMonitor")
                     .setWriteToFile(true)
                     .setPackageLevel(1).build();
         } else {
             logger = Logger.Builder.newBuilder(SystemApplication.getContext(), "HBLog")
                     .setDebug(true)
-                    .setLogDir("HBApplication")
+                    .setLogDir("HBDvrVideoMonitor")
                     .setWriteToFile(true)
                     .setPackageLevel(1).build();
         }
     }
-
+    private LogTools(){}
     public static void v(@NonNull String tag, @NonNull String message) {
         logger.v(tag, message);
     }

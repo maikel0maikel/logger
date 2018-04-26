@@ -161,10 +161,6 @@ public class Logger {
             case LogLevel.DEBUG:
             case LogLevel.INFO:
             case LogLevel.WARN:
-                if (mDebug) {
-                    mDefaultPrinter.printConsole(level, tag, logMsg, element);
-                }
-                break;
             case LogLevel.ERROR:
             case LogLevel.PRINT:
                 if (mDebug) {
@@ -254,11 +250,7 @@ public class Logger {
             mLogSegment = LogSegment.TWENTY_FOUR_HOURS;
             mName = name;
             mDebug = true;
-            if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-                mLogDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/HBSystem";
-            } else {
-                mLogDir = mContext.getFilesDir().getAbsolutePath() + "/HBSystem";
-            }
+            mLogDir = "HBApplication";
             isWriteToFile = true;
             mZoneOffset = ZoneOffset.P0800;
             mTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
