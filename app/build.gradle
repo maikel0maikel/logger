@@ -21,7 +21,7 @@ android {
 dependencies {
         repositories {
             maven {
-                url "https://raw.githubusercontent.com/maikel0maikel/logger"
+                url "https://raw.githubusercontent.com/maikel0maikel/logger/master"
             }
         }
     implementation fileTree(dir: 'libs', include: ['*.jar'])
