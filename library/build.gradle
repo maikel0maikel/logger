@@ -39,7 +39,7 @@ uploadArchives{
         pom.project {
             groupId "com.sinohb" //groupId:artifactId:version
             artifactId "logger" //LibA
-            version "1.0"
+            version "1.0.1"
         }
     }
 }

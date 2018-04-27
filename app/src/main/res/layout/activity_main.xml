@@ -55,4 +55,10 @@
         android:layout_height="wrap_content"
         android:text="Log json"
         android:onClick="log"/>
+    <Button
+        android:id="@+id/appCrash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Test app crash"
+        android:onClick="log"/>
 </LinearLayout>

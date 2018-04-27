@@ -5,19 +5,22 @@ import android.support.annotation.NonNull;
 
 public class LogTools {
     private static Logger logger;
-
     static {
-        if (SystemApplication.getContext() == null) {
-            logger = Logger.Builder.newBuilder("HBLog").setDebug(true)
-                    .setLogDir("HBDvrVideoMonitor")
-                    .setWriteToFile(true)
-                    .setPackageLevel(1).build();
-        } else {
-            logger = Logger.Builder.newBuilder(SystemApplication.getContext(), "HBLog")
-                    .setDebug(true)
-                    .setLogDir("HBDvrVideoMonitor")
-                    .setWriteToFile(true)
-                    .setPackageLevel(1).build();
+        if (SystemApplication.getLogger() == null) {
+            if (SystemApplication.getContext() == null) {
+                logger = Logger.Builder.newBuilder("HBLog").setDebug(true)
+                        .setLogDir("HBDvrVideoMonitor")
+                        .setWriteToFile(true)
+                        .setPackageLevel(1).build();
+            } else {
+                logger = Logger.Builder.newBuilder(SystemApplication.getContext(), "HBLog")
+                        .setDebug(true)
+                        .setLogDir(SystemApplication.getContext().getPackageName())
+                        .setWriteToFile(true)
+                        .setPackageLevel(1).build();
+            }
+        }else {
+            logger = SystemApplication.getLogger();
         }
     }
     private LogTools(){}

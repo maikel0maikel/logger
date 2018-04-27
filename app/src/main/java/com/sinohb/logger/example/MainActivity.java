@@ -50,6 +50,12 @@ public class MainActivity extends AppCompatActivity {
                         + "\"path\":\"西雅图,华盛顿州,美国\",\"timezone\":\"America/Los_Angeles\","
                         + "\"timezone_offset\":\"-08:00\"}}");
                 break;
+            case R.id.appCrash:
+                int i = 10;
+                int y = 0;
+                int result = i/y;
+                LogTools.d("result="+result);
+                break;
         }
 
     }
