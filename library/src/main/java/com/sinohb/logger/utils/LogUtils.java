@@ -25,8 +25,8 @@ public class LogUtils {
     private static final String TAG = "LogUtils";
     private static final int MAX_LOG_LENGTH = 4000;//一行最大
     private static final String LOG_FILE_EXTEND = ".log";
-    private static final String PRINT_CONSOLE_FORMAT ="(%1$s:line%2$d)#%3$s Thread:%4$s "+  ": " + "%5$s" ;
-    private static final String PRINT_FILE_FORMAT = "[%1$s %2$s/%3$s:line%4$d Thread: %5$s]:"  + "%6$s"+"\n";
+    private static final String PRINT_CONSOLE_FORMAT = "(%1$s:line%2$d)#%3$s Thread:%4$s " + ": " + "%5$s";
+    private static final String PRINT_FILE_FORMAT = "[%1$s %2$s/%3$s:line%4$d Thread: %5$s]:" + "%6$s" + "\n";
 
     private static final ExecutorService sExecutorService;
 
@@ -198,7 +198,7 @@ public class LogUtils {
         //String fileName = element.getFileName();
         String className = element.getClassName();
         String threadName = Thread.currentThread().getName();
-        return String.format(PRINT_CONSOLE_FORMAT, className, lineNumber, methodName, threadName,message);
+        return String.format(PRINT_CONSOLE_FORMAT, className, lineNumber, methodName, threadName, message);
     }
 
     /**
@@ -220,7 +220,7 @@ public class LogUtils {
         int lineNum = element.getLineNumber();
         String threadName = Thread.currentThread().getName();
         return String.format(PRINT_FILE_FORMAT, time, level, className, lineNum, threadName,
-                "["+tag + "] " + message);
+                "[" + tag + "] " + message);
     }
 
     /**
@@ -230,23 +230,23 @@ public class LogUtils {
      * @return 系统相关的信息
      */
     private static String genInfo(@NonNull Context context) {
-        if (context == null){
+        if (context == null) {
             return "[context is null]";
         }
         StringBuilder builder = new StringBuilder();
         builder.append("[").append(context.getString(R.string.app_package_name)).append(": ").append(SysUtils.getAppPackageName(context))
-                .append(", ").append(context.getString(R.string.app_version_name)).append(": " ).append(SysUtils.getAppVersionName(
-                context)).append(", ").append(context.getString(R.string.app_version_code)).append(": " ).append(SysUtils.getAppVersionCode(
+                .append(", ").append(context.getString(R.string.app_version_name)).append(": ").append(SysUtils.getAppVersionName(
+                context)).append(", ").append(context.getString(R.string.app_version_code)).append(": ").append(SysUtils.getAppVersionCode(
                 context)).append(", ").append(context.getString(R.string.os_version_name)).append(": ").append(SysUtils.getOsVersionName())
                 .append(", ").append(context.getString(R.string.os_version_code)).append(": ").append(SysUtils.getOsVersionCode())
                 .append(", ").append(context.getString(R.string.os_display_name)).append(": ").append(SysUtils.getOsVersionDisplayName())
                 .append(", ").append(context.getString(R.string.brand_info)).append(": ").append(SysUtils.getBrandInfo())
-                .append(", ").append(context.getString(R.string.product_info) ).append(": ").append(SysUtils.getProductInfo())
+                .append(", ").append(context.getString(R.string.product_info)).append(": ").append(SysUtils.getProductInfo())
                 .append(", ").append(context.getString(R.string.model_info)).append(": ").append(SysUtils.getModelInfo())
                 .append(", ").append(context.getString(R.string.manufacturer_info)).append(": ").append(SysUtils.getManufacturerInfo())
                 .append("]\n");
         String info = builder.toString();
-        builder.delete(0,builder.length());
+        builder.delete(0, builder.length());
         return info;
     }
 }

@@ -13,8 +13,9 @@ import static com.sinohb.logger.constant.LogLevel.JSON;
 import static com.sinohb.logger.constant.LogLevel.PRINT;
 import static com.sinohb.logger.constant.LogLevel.VERBOSE;
 import static com.sinohb.logger.constant.LogLevel.WARN;
+import static com.sinohb.logger.constant.LogLevel.WTF;
 
-@StringDef({VERBOSE,DEBUG,INFO,WARN,ERROR,PRINT,JSON})
+@StringDef({VERBOSE,DEBUG,INFO,WARN,ERROR,PRINT,JSON,WTF})
 @Retention(RetentionPolicy.SOURCE)
 public @interface LogLevel {
     String VERBOSE = "V";
@@ -24,4 +25,5 @@ public @interface LogLevel {
     String ERROR = "E";
     String PRINT = "P";
     String JSON = "J";
+    String WTF = "WTF";
 }

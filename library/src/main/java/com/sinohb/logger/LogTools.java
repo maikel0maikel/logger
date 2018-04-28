@@ -79,6 +79,34 @@ public class LogTools {
     public static void e(Throwable t, @NonNull String message) {
         logger.e(t, message);
     }
+    public static void e(@NonNull String tag,@NonNull Throwable t) {
+        logger.e(tag,t);
+    }
+    public static void e(@NonNull Throwable t) {
+        logger.e(t);
+    }
+    public static void p(@NonNull String tag, @NonNull String message) {
+        logger.p(tag, message);
+    }
+
+    public static void p(@NonNull String message) {
+        logger.p(message);
+    }
+
+    public static void p(@NonNull String tag, Throwable t, @NonNull String message) {
+        logger.p(tag, t, message);
+    }
+
+    public static void p(Throwable t, @NonNull String message) {
+        logger.p(t, message);
+    }
+
+    public static void p(@NonNull String tag,@NonNull Throwable t) {
+        logger.p(tag,t);
+    }
+    public static void p(@NonNull Throwable t) {
+        logger.p(t);
+    }
 
     public static void wtf(@NonNull String tag, @NonNull String message) {
         logger.wtf(tag, message);
@@ -95,5 +123,10 @@ public class LogTools {
     public static void wtf(Throwable t, @NonNull String message) {
         logger.wtf(t, message);
     }
-
+    public static void wtf(@NonNull String tag,@NonNull Throwable t) {
+        logger.wtf(tag,t);
+    }
+    public static void wtf(@NonNull Throwable t) {
+        logger.wtf(t);
+    }
 }

@@ -26,8 +26,11 @@ public class AppCrashHandler implements Thread.UncaughtExceptionHandler{
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        if (!handleException(ex)&&null!=mDefaultUncaughtHandler){//沒有处理异常则交给系统去处理
-            mDefaultUncaughtHandler.uncaughtException(thread, ex);
+        if (!handleException(ex)){//沒有处理异常则交给系统去处理
+            if (mDefaultUncaughtHandler!=null){
+                LogTools.e("uncaughtException","handleException is false and mDefaultUncaughtHandler not null");
+                mDefaultUncaughtHandler.uncaughtException(thread, ex);
+            }
         }else {
             try {
                 Thread.sleep(3000);
@@ -41,7 +44,7 @@ public class AppCrashHandler implements Thread.UncaughtExceptionHandler{
     }
 
     private boolean handleException(Throwable ex){
-        LogTools.e(ex,"程序崩溃了---");
+        LogTools.wtf(ex,"程序崩溃了---");
         new Thread() {
             @Override
             public void run() {

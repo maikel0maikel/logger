@@ -41,6 +41,7 @@ public class Logger {
     private int mPackageLevel;
     private String mLogPrefix;
     private List<String> mWriteFileLevels;
+    private boolean mAutoDelete;
 
     private Logger(Builder builder) {
         this.mContext = builder.mContext;
@@ -54,6 +55,7 @@ public class Logger {
         this.mLogPrefix = builder.mLogPrefix;
         this.mLogSegment = builder.mLogSegment;
         this.mWriteFileLevels = builder.mWriteFileLevels;
+        this.mAutoDelete = builder.mAutoDelete;
 
         mDefaultPrinter = new DefaultPrinter();
         mJsonPrinter = new JsonPrinter();
@@ -116,20 +118,60 @@ public class Logger {
         printLog(LogLevel.ERROR, TAG, t, message);
     }
 
-    public void wtf(@NonNull String tag, @NonNull String message) {
+    public void e(@NonNull String tag, @NonNull Throwable t) {
+        printLog(LogLevel.ERROR, tag, t, null);
+    }
+
+    public void e(@NonNull Throwable t) {
+        printLog(LogLevel.ERROR, TAG, t, null);
+    }
+
+    public void p(@NonNull String tag, @NonNull String message) {
         printLog(LogLevel.PRINT, tag, null, message);
     }
 
-    public void wtf(@NonNull String message) {
+    public void p(@NonNull String message) {
         printLog(LogLevel.PRINT, TAG, null, message);
     }
 
-    public void wtf(@NonNull String tag, Throwable t, @NonNull String message) {
+    public void p(@NonNull String tag, Throwable t, @NonNull String message) {
         printLog(LogLevel.PRINT, tag, t, message);
     }
 
-    public void wtf(Throwable t, @NonNull String message) {
+    public void p(Throwable t, @NonNull String message) {
         printLog(LogLevel.PRINT, TAG, t, message);
+    }
+
+    public void p(@NonNull String tag, @NonNull Throwable t) {
+        printLog(LogLevel.PRINT, tag, t, null);
+    }
+
+    public void p(@NonNull Throwable t) {
+        printLog(LogLevel.PRINT, TAG, t, null);
+    }
+
+    public void wtf(@NonNull String tag, @NonNull String message) {
+        printLog(LogLevel.WTF, tag, null, message);
+    }
+
+    public void wtf(@NonNull String message) {
+        printLog(LogLevel.WTF, TAG, null, message);
+    }
+
+    public void wtf(@NonNull String tag, Throwable t, @NonNull String message) {
+        printLog(LogLevel.WTF, tag, t, message);
+    }
+
+    public void wtf(Throwable t, @NonNull String message) {
+        printLog(LogLevel.WTF, TAG, t, message);
+    }
+
+    public void wtf(@NonNull String tag, @NonNull Throwable t) {
+        printLog(LogLevel.WTF, tag, t, null);
+    }
+
+    public void wtf(@NonNull Throwable t) {
+        printLog(LogLevel.WTF, TAG, t, null);
     }
 
     private void printLog(@LogLevel String level, String tag, Throwable t, String message) {
@@ -163,6 +205,7 @@ public class Logger {
             case LogLevel.WARN:
             case LogLevel.ERROR:
             case LogLevel.PRINT:
+            case LogLevel.WTF:
                 if (mDebug) {
                     mDefaultPrinter.printConsole(level, tag, logMsg, element);
                 }
@@ -244,6 +287,7 @@ public class Logger {
         private String mLogPrefix;
         private SimpleDateFormat mTimeFormat;
         private List<String> mWriteFileLevels;
+        private boolean mAutoDelete;
 
         private Builder(Context context, String name) {
             mContext = context;
@@ -257,8 +301,10 @@ public class Logger {
             mPackageLevel = 0;
             mLogPrefix = "";
             mWriteFileLevels = new ArrayList<>();
+            mWriteFileLevels.add(LogLevel.WTF);
             mWriteFileLevels.add(LogLevel.ERROR);
             mWriteFileLevels.add(LogLevel.PRINT);
+            mAutoDelete = false;
         }
 
         public static Builder newBuilder(Context context, String name) {
@@ -313,6 +359,11 @@ public class Logger {
             if (mWriteFileLevels != null && (!mWriteFileLevels.contains(logLevel))) {
                 mWriteFileLevels.add(logLevel);
             }
+            return this;
+        }
+
+        public Builder setAudoDelete(boolean isAutoDelete) {
+            this.mAutoDelete = isAutoDelete;
             return this;
         }
 

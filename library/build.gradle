@@ -21,6 +21,7 @@ android {
         }
     }
 
+    sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jni/'] } }
 }
 
 dependencies {
@@ -31,7 +32,7 @@ dependencies {
 apply plugin: 'maven'
 
 
-uploadArchives{
+uploadArchives {
     repositories.mavenDeployer {
         def mavenRepositoryPath = file(getProperty('aar.logger'))
         repository(url: "file://${mavenRepositoryPath.absolutePath}")
@@ -39,7 +40,7 @@ uploadArchives{
         pom.project {
             groupId "com.sinohb" //groupId:artifactId:version
             artifactId "logger" //LibA
-            version "1.0.1"
+            version "1.0.2"
         }
     }
 }
