@@ -15,7 +15,7 @@ public class SystemApplication extends Application{
         super.onCreate();
         mContext = this.getApplicationContext();
         sLogger = Logger.Builder.newBuilder(getApplicationContext(), mContext.getPackageName())
-                .setDebug(BuildConfig.DEBUG)//为true 会打印日志到控制台 否则不会
+                .setDebug(true)//为true 会打印日志到控制台 否则不会
                 .setWriteToFile(true)//是否写入文件 为true将写入文件 默认为true
                 .setLogDir(mContext.getPackageName())//日志记录目录 如果不设置 默认路径为 sdcard/HBSystem/HBApplication 可以使用应用的名称作为日志目录名
                 .setLogSegment(LogSegment.TWENTY_FOUR_HOURS)//时间切片 默认24小时
