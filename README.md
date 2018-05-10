@@ -18,13 +18,13 @@ allprojects {
 studio3.0以下
 ```groovy
 dependencies {
-     compile 'com.sinohb:logger:1.0.4'
+     compile 'com.sinohb:logger:1.0.5'
 }
 ```
  studio3.0以上（含3.0）
  ```groovy
  dependencies {
-      implementation 'com.sinohb:logger:1.0.4'
+      implementation 'com.sinohb:logger:1.0.5'
  }
 ```
 
