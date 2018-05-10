@@ -30,6 +30,10 @@ public class AppCrashHandler implements Thread.UncaughtExceptionHandler{
             if (mDefaultUncaughtHandler!=null){
                 LogTools.e("uncaughtException","handleException is false and mDefaultUncaughtHandler not null");
                 mDefaultUncaughtHandler.uncaughtException(thread, ex);
+            }else {
+                // 退出程序
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(1);
             }
         }else {
             try {

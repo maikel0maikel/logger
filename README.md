@@ -18,13 +18,13 @@ allprojects {
 studio3.0以下
 ```groovy
 dependencies {
-     compile 'com.sinohb:logger:1.0'
+     compile 'com.sinohb:logger:1.0.4'
 }
 ```
  studio3.0以上（含3.0）
  ```groovy
  dependencies {
-      implementation 'com.sinohb:logger:1.0'
+      implementation 'com.sinohb:logger:1.0.4'
  }
 ```
 
@@ -53,6 +53,8 @@ public class RootApp extends Application {
                 .addWriteLevel(LogLevel.V)//比如v级别 可以添加多个 默认写E与P级别
                 .setZoneOffset(TimeUtils.ZoneOffset.P0800)//时区偏移量 默认东八区
                 .setPackageLevel(1)//日志栈层级 0-10
+                .setAudoDelete(true)//自动删除日志文件
+                .setStoreDays(5)//配置日志存储时间单位天，默认为7天（需同时设置setAudoDelete为true否则无效）
                 .build();
     }
 

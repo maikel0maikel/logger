@@ -21,6 +21,8 @@ public class SystemApplication extends Application{
                 .setLogSegment(LogSegment.TWENTY_FOUR_HOURS)//时间切片 默认24小时
                 .addWriteLevel(LogLevel.VERBOSE)//比如v级别 可以添加多个 默认写E与P级别
                 .setPackageLevel(1)//日志栈层级 0-10
+                .setAudoDelete(true)//配置是否自动删除日志
+                .setStoreDays(5)//配置日志存储时间单位天，默认为7天（需同时设置setAudoDelete为true否则无效）
                 .build();
         AppCrashHandler.getInstance().init();
     }

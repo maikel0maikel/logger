@@ -42,7 +42,7 @@ public class Logger {
     private String mLogPrefix;
     private List<String> mWriteFileLevels;
     private boolean mAutoDelete;
-
+    private int mStoreDays;
     private Logger(Builder builder) {
         this.mContext = builder.mContext;
         this.mName = builder.mName;
@@ -56,12 +56,115 @@ public class Logger {
         this.mLogSegment = builder.mLogSegment;
         this.mWriteFileLevels = builder.mWriteFileLevels;
         this.mAutoDelete = builder.mAutoDelete;
+        this.mStoreDays = builder.mStoreDays;
 
         mDefaultPrinter = new DefaultPrinter();
         mJsonPrinter = new JsonPrinter();
 
     }
 
+    public Context getContext() {
+        return mContext;
+    }
+
+    public void setContext(Context mContext) {
+        this.mContext = mContext;
+    }
+
+    public int getLogSegment() {
+        return mLogSegment;
+    }
+
+    public void setLogSegment(int mLogSegment) {
+        this.mLogSegment = mLogSegment;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String mName) {
+        this.mName = mName;
+    }
+
+    public String getmLogDir() {
+        return mLogDir;
+    }
+
+    public void setLogDir(String mLogDir) {
+        this.mLogDir = mLogDir;
+    }
+
+    public boolean isWriteToFile() {
+        return isWriteToFile;
+    }
+
+    public void setWriteToFile(boolean writeToFile) {
+        isWriteToFile = writeToFile;
+    }
+
+    public boolean isDebug() {
+        return mDebug;
+    }
+
+    public void setDebug(boolean mDebug) {
+        this.mDebug = mDebug;
+    }
+
+    public long getZoneOffset() {
+        return mZoneOffset;
+    }
+
+    public void setZoneOffset(long mZoneOffset) {
+        this.mZoneOffset = mZoneOffset;
+    }
+
+    public SimpleDateFormat getTimeFormat() {
+        return mTimeFormat;
+    }
+
+    public void setTimeFormat(SimpleDateFormat mTimeFormat) {
+        this.mTimeFormat = mTimeFormat;
+    }
+
+    public int getPackageLevel() {
+        return mPackageLevel;
+    }
+
+    public void setPackageLevel(int mPackageLevel) {
+        this.mPackageLevel = mPackageLevel;
+    }
+
+    public String getLogPrefix() {
+        return mLogPrefix;
+    }
+
+    public void setLogPrefix(String mLogPrefix) {
+        this.mLogPrefix = mLogPrefix;
+    }
+
+    public List<String> getWriteFileLevels() {
+        return mWriteFileLevels;
+    }
+
+    public void setWriteFileLevels(List<String> mWriteFileLevels) {
+        this.mWriteFileLevels = mWriteFileLevels;
+    }
+
+    public boolean isAutoDelete() {
+        return mAutoDelete;
+    }
+
+    public void setAutoDelete(boolean mAutoDelete) {
+        this.mAutoDelete = mAutoDelete;
+    }
+
+    public void setStoreDays(int storeDays){
+        this.mStoreDays = storeDays;
+    }
+    public int getStoreDays(){
+        return this.mStoreDays;
+    }
     public void v(@NonNull String tag, @NonNull String message) {
         printLog(LogLevel.VERBOSE, tag, null, message);
     }
@@ -288,7 +391,7 @@ public class Logger {
         private SimpleDateFormat mTimeFormat;
         private List<String> mWriteFileLevels;
         private boolean mAutoDelete;
-
+        private int mStoreDays;
         private Builder(Context context, String name) {
             mContext = context;
             mLogSegment = LogSegment.TWENTY_FOUR_HOURS;
@@ -305,6 +408,7 @@ public class Logger {
             mWriteFileLevels.add(LogLevel.ERROR);
             mWriteFileLevels.add(LogLevel.PRINT);
             mAutoDelete = false;
+            mStoreDays = 7;
         }
 
         public static Builder newBuilder(Context context, String name) {
@@ -366,9 +470,13 @@ public class Logger {
             this.mAutoDelete = isAutoDelete;
             return this;
         }
-
+        public Builder setStoreDays(int days){
+            this.mStoreDays = days;
+            return this;
+        }
         public Logger build() {
             Logger logger = new Logger(this);
+            SparryLogger.addLogger(mName,logger);
             return logger;
         }
     }
