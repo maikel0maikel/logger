@@ -1,8 +1,6 @@
 package com.sinohb.logger;
 
 import android.content.Context;
-import android.os.Environment;
-import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -37,7 +35,6 @@ public class Logger {
     private long mZoneOffset;
     //private String mTimeFormat;
     private SimpleDateFormat mTimeFormat;
-    @IntRange(from = 0, to = 10)
     private int mPackageLevel;
     private String mLogPrefix;
     private List<String> mWriteFileLevels;
@@ -385,7 +382,6 @@ public class Logger {
         @ZoneOffset
         private long mZoneOffset;
         //private String mTimeFormat;
-        @IntRange(from = 0, to = 10)
         private int mPackageLevel;
         private String mLogPrefix;
         private SimpleDateFormat mTimeFormat;
@@ -449,7 +445,7 @@ public class Logger {
             return this;
         }
 
-        public Builder setPackageLevel(@IntRange(from = 0, to = 10) int packageLevel) {
+        public Builder setPackageLevel(int packageLevel) {
             this.mPackageLevel = packageLevel;
             return this;
         }
