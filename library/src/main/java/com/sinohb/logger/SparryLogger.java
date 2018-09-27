@@ -19,7 +19,7 @@ public class SparryLogger {
         mLoggers.put(name, logger);
         if (!isOpenTask) {
             isOpenTask = startDeleteTask();
-            logger.p("addLogger isOpenTask=" + isOpenTask);
+            logger.i("addLogger isOpenTask=" + isOpenTask);
         }
     }
 

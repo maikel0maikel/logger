@@ -394,7 +394,7 @@ public class Logger {
             mName = name;
             mDebug = true;
             mLogDir = "HBApplication";
-            isWriteToFile = true;
+            isWriteToFile = false;
             mZoneOffset = ZoneOffset.P0800;
             mTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
             mPackageLevel = 0;
