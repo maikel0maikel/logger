@@ -5,7 +5,7 @@ android {
 
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -40,7 +40,7 @@ uploadArchives {
         pom.project {
             groupId "com.sinohb" //groupId:artifactId:version
             artifactId "logger" //LibA
-            version "1.0.6"
+            version "1.0.8"
         }
     }
 }

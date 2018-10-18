@@ -1,12 +1,14 @@
 package com.sinohb.logger.example;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.sinohb.logger.LogTools;
+import com.sinohb.logger.example.test.TestService;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},10);
         }
         setContentView(R.layout.activity_main);
+        startService(new Intent(this, TestService.class));
     }
     public void log(View view){
 
