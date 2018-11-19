@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.sinohb.maikel.example">
+    package="com.maikel.logger.example">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <application
@@ -10,15 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.sinohb.maikel.SystemApplication">
-        <activity android:name="com.sinohb.maikel.example.MainActivity">
+        android:name="com.maikel.logger.SystemApplication">
+        <activity android:name="com.maikel.logger.example.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="com.sinohb.maikel.example.test.TestService"/>
+        <service android:name="com.maikel.logger.example.test.TestService"/>
     </application>
 
 </manifest>
