@@ -38,7 +38,7 @@ uploadArchives {
         repository(url: "file://${mavenRepositoryPath.absolutePath}")
 
         pom.project {
-            groupId "com.sinohb" //groupId:artifactId:version
+            groupId "com.maikel" //groupId:artifactId:version
             artifactId "logger" //LibA
             version "1.0.8"
         }
