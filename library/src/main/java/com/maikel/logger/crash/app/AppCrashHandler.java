@@ -1,6 +1,7 @@
 package com.maikel.logger.crash.app;
 
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.maikel.logger.LogTools;
@@ -30,33 +31,25 @@ public class AppCrashHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
         if (!handleException(ex)) {//沒有处理异常则交给系统去处理
-            try {
-                if (mDefaultUncaughtHandler != null) {
-                    LogTools.e("uncaughtException", "handleException is false and mDefaultUncaughtHandler not null");
-                    mDefaultUncaughtHandler.uncaughtException(thread, ex);
-                } else {
-                    // 退出程序
-                    android.os.Process.killProcess(android.os.Process.myPid());
-                    System.exit(1);
-                }
-            }finally {
-                if (listener!=null) listener.onException();
-            }
-
-        } else {
-            try {
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    LogTools.e(e, "InterruptedException");
-                }
+            if (mDefaultUncaughtHandler != null) {
+                LogTools.e("uncaughtException", "handleException is false and mDefaultUncaughtHandler not null");
+                mDefaultUncaughtHandler.uncaughtException(thread, ex);
+            } else {
                 // 退出程序
                 android.os.Process.killProcess(android.os.Process.myPid());
                 System.exit(1);
-            }finally {
-                if (listener!=null) listener.onException();
             }
+        } else {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                LogTools.e(e, "InterruptedException");
+            }
+            // 退出程序
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
         }
+
     }
 
     private boolean handleException(Throwable ex) {
@@ -70,6 +63,7 @@ public class AppCrashHandler implements Thread.UncaughtExceptionHandler {
                 Looper.loop();
             }
         }.start();
+        if (listener != null) listener.onException();
         return true;
     }
 

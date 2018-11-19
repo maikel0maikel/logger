@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.maikel.logger.LogTools;
 import com.maikel.logger.crash.app.AppCrashHandler;
+import com.maikel.logger.example.MainActivity;
 
 public class TestService extends Service implements AppCrashHandler.UncaughtExceptionListener{
 
@@ -26,7 +27,7 @@ public class TestService extends Service implements AppCrashHandler.UncaughtExce
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         LogTools.p("TestService","onStartCommand");
-        return START_STICKY;
+        return super.onStartCommand(intent,flags,startId);
     }
 
     @Override
@@ -37,7 +38,10 @@ public class TestService extends Service implements AppCrashHandler.UncaughtExce
 
     @Override
     public void onException() {
-        startService(new Intent(this,TestService.class));
+//        startService(new Intent(this,TestService.class));
         LogTools.p("TestService","onException");
+        Intent intent = new Intent(this,MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }
