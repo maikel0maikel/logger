@@ -16,6 +16,8 @@ public class TestService extends Service implements AppCrashHandler.UncaughtExce
         super.onCreate();
         LogTools.p("TestService","onCreate");
         AppCrashHandler.getInstance().setUncaughtExceptionListener(this);
+
+        
     }
 
     @Nullable
