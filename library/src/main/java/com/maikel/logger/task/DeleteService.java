@@ -80,13 +80,13 @@ public class DeleteService {
                             long oldTime = simpleDateFormat.parse(oldFileDate).getTime();
                             if (todayTime - oldTime >= storeTime) {
                                 boolean de = f.delete();
-                                LogTools.e(TAG, f.getName() + " is delete " + de);
+                                LogTools.i(TAG, f.getName() + " is delete " + de);
                             } else {
-                                LogTools.e(TAG, f.getName() + " is delete false [todayTime=" + todayTime + ",oldTime=" + oldTime + ",storeTime=" + storeTime + ",storeDays=" + storeDays + "]");
+                                LogTools.i(TAG, f.getName() + " is delete false [todayTime=" + todayTime + ",oldTime=" + oldTime + ",storeTime=" + storeTime + ",storeDays=" + storeDays + "]");
                             }
                         } catch (ParseException e) {
                             e.printStackTrace();
-                            LogTools.e(TAG, f.getName() + " is delete false because " + e.getMessage());
+                            LogTools.i(TAG, f.getName() + " is delete false because " + e.getMessage());
                         }
                     }
                     //}

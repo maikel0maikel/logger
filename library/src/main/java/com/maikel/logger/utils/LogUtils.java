@@ -131,7 +131,7 @@ public class LogUtils {
      * @return 日志目录路径
      */
     public static String genDirPath(@NonNull String logDir) {
-        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "HBSystem"
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Logger"
                 + File.separator + logDir;
     }
 

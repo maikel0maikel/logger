@@ -393,7 +393,7 @@ public class Logger {
             mLogSegment = LogSegment.TWENTY_FOUR_HOURS;
             mName = name;
             mDebug = true;
-            mLogDir = "HBApplication";
+            mLogDir = "Logger";
             isWriteToFile = false;
             mZoneOffset = ZoneOffset.P0800;
             mTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
