@@ -1,6 +1,6 @@
 apply plugin: 'com.android.library'
 android {
-    compileSdkVersion 28
+    compileSdkVersion 26
 
 
 
@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:22.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
 }
 
 
@@ -40,7 +40,7 @@ uploadArchives {
         pom.project {
             groupId "com.maikel" //groupId:artifactId:version
             artifactId "logger" //LibA
-            version "1.0.1"
+            version "1.0.2"
         }
     }
 }
