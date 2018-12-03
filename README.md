@@ -18,13 +18,13 @@ allprojects {
 studio3.0以下
 ```groovy
 dependencies {
-     compile 'com.maikel:logger:1.0.5'
+     compile 'com.maikel:logger:1.0.2'
 }
 ```
  studio3.0以上（含3.0）
  ```groovy
  dependencies {
-      implementation 'com.sinohb:logger:1.0.5'
+      implementation 'com.maikel:logger:1.0.2'
  }
 ```
 
