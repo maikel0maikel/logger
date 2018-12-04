@@ -18,13 +18,13 @@ allprojects {
 studio3.0以下
 ```groovy
 dependencies {
-     compile 'com.maikel:logger:1.0.2'
+     compile 'com.maikel:logger:1.0.4'
 }
 ```
  studio3.0以上（含3.0）
  ```groovy
  dependencies {
-      implementation 'com.maikel:logger:1.0.2'
+      implementation 'com.maikel:logger:1.0.4'
  }
 ```
 
@@ -47,7 +47,8 @@ public class RootApp extends Application {
                 /* 下面的属性都是默认值，你可以根据需求决定是否修改它们. */
                 .setDebug(true)//为true 会打印日志到控制台 否则不会
                 .setWriteToFile(true)//是否写入文件 为true将写入文件 默认为true
-                .setLogDir("HBDvrVideoMonitor")//日志记录目录 如果不设置 默认路径为 sdcard/Logger/HBApplication 可以使用应用的名称作为日志目录名
+                .setParentDir("xxxx")//日志记录父目录，如果不设置，默认为sdcard/maikel
+                .setLogDir("xxxxx")//日志记录目录 如果不设置 默认路径为 sdcard/maikel/Logger 可以使用应用的名称作为日志目录名
                 .setLogPrefix("")//日志前缀 为空时默认为"_" 不设置即可
                 .setLogSegment(LogSegment.TWELVE_HOURS)//时间切片 默认24小时
                 .addWriteLevel(LogLevel.V)//比如v级别 可以添加多个 默认写E与P级别

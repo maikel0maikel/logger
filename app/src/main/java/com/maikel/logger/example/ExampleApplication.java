@@ -8,5 +8,7 @@ public class ExampleApplication extends SystemApplication {
         super.onCreate();
         getLogger().setDebug(true);
         getLogger().setWriteToFile(true);
+        getLogger().setParentDir("TestLog");
+        getLogger().setLogDir("example");
     }
 }

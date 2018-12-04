@@ -56,9 +56,9 @@ public class LogUtils {
     }
 
     public static void printFile(Context context, @LogLevel String level, String tag, String message, StackTraceElement element,
-                                 @ZoneOffset long zoneOffset, SimpleDateFormat timeFormat, String logDir,
+                                 @ZoneOffset long zoneOffset, SimpleDateFormat timeFormat,String parentDir, String logDir,
                                  String logPrefix, @LogSegment int logSegment) {
-        String dirPath = genDirPath(logDir);
+        String dirPath = genDirPath(parentDir,logDir);
         String fileName = genFileName(logPrefix, logSegment, zoneOffset);
         String saveContent = decorateMsgForFile(level, tag, message, element, zoneOffset, timeFormat);
         writeFile(context, dirPath, fileName, saveContent);
@@ -128,10 +128,11 @@ public class LogUtils {
      * 生成日志目录路径.
      *
      * @param logDir 日志保存的目录
+     * @param parentDir 日志父目录
      * @return 日志目录路径
      */
-    public static String genDirPath(@NonNull String logDir) {
-        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "Logger"
+    public static String genDirPath(@NonNull String parentDir,@NonNull String logDir) {
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + parentDir
                 + File.separator + logDir;
     }
 

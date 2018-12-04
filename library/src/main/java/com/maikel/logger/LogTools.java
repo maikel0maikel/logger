@@ -9,11 +9,11 @@ public class LogTools {
         if (SystemApplication.getLogger() == null) {
             if (SystemApplication.getContext() == null) {
                 logger = Logger.Builder.newBuilder("HBLog").setDebug(true)
-                        .setLogDir("HBDvrVideoMonitor")
+                        .setLogDir("maikel")
                         .setWriteToFile(true)
                         .setPackageLevel(1).build();
             } else {
-                logger = Logger.Builder.newBuilder(SystemApplication.getContext(), "HBLog")
+                logger = Logger.Builder.newBuilder(SystemApplication.getContext(), "Log")
                         .setDebug(true)
                         .setLogDir(SystemApplication.getContext().getPackageName())
                         .setWriteToFile(true)

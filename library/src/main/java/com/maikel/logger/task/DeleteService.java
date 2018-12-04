@@ -39,26 +39,28 @@ public class DeleteService {
         for (Map.Entry<String, Logger> entry : loggerSet) {
             Logger logger = entry.getValue();
             if (logger.isAutoDelete()) {
-                EXECUTOR.execute(new DeleteTask(logger.getmLogDir(), logger.getStoreDays()));
+                EXECUTOR.execute(new DeleteTask(logger.getParentDir(),logger.getmLogDir(), logger.getStoreDays()));
             }
         }
     }
 
     static class DeleteTask implements Runnable {
         private String mDir;
+        private String mParentDir;
         //private static final long T = 7 * 24 * 60 * 60 * 1000L;
         private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         private static final String TAG = "DeleteTask";
         private int storeDays;
 
-        DeleteTask(String logDir, int storeDays) {
+        DeleteTask(String parentDir,String logDir, int storeDays) {
+            this.mParentDir = parentDir;
             this.mDir = logDir;
             this.storeDays = storeDays;
         }
 
         @Override
         public void run() {
-            String logDirPath = LogUtils.genDirPath(mDir);
+            String logDirPath = LogUtils.genDirPath(mParentDir,mDir);
             File logDirFile = new File(logDirPath);
             if (logDirFile.exists()) {
                 File[] files = logDirFile.listFiles();

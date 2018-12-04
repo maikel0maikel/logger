@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 26
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
 
@@ -40,7 +40,7 @@ uploadArchives {
         pom.project {
             groupId "com.maikel" //groupId:artifactId:version
             artifactId "logger" //LibA
-            version "1.0.2"
+            version "1.0.4"
         }
     }
 }

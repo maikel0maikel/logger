@@ -15,10 +15,10 @@ public class DefaultPrinter implements IPrinter {
 
     @Override
     public void printFile(Context context, @LogLevel String level, String tag, String message, StackTraceElement element,
-                          long offset, SimpleDateFormat timeFormat, String logDir,
+                          long offset, SimpleDateFormat timeFormat,String parentDir, String logDir,
                           String logPrefix, int logSegment) {
         synchronized (IPrinter.class){
-            LogUtils.printFile(context,level,tag,message,element,offset,timeFormat,logDir,logPrefix,logSegment);
+            LogUtils.printFile(context,level,tag,message,element,offset,timeFormat,parentDir,logDir,logPrefix,logSegment);
         }
     }
 }

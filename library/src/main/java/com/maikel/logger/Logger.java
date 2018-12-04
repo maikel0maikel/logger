@@ -28,6 +28,7 @@ public class Logger {
     @LogSegment
     private int mLogSegment;
     private String mName;
+    private String mParentDir;
     private String mLogDir;
     private boolean isWriteToFile;
     private boolean mDebug;
@@ -54,7 +55,7 @@ public class Logger {
         this.mWriteFileLevels = builder.mWriteFileLevels;
         this.mAutoDelete = builder.mAutoDelete;
         this.mStoreDays = builder.mStoreDays;
-
+        this.mParentDir = builder.parentDir;
         mDefaultPrinter = new DefaultPrinter();
         mJsonPrinter = new JsonPrinter();
 
@@ -88,6 +89,12 @@ public class Logger {
         return mLogDir;
     }
 
+    public void setParentDir(String parentDir){
+        this.mParentDir = parentDir;
+    }
+    public String getParentDir(){
+        return mParentDir;
+    }
     public void setLogDir(String mLogDir) {
         this.mLogDir = mLogDir;
     }
@@ -311,7 +318,7 @@ public class Logger {
                 }
                 if (isWriteToFile && mWriteFileLevels.contains(level)) {
                     mDefaultPrinter.printFile(mContext, level, tag, logMsg, element, mZoneOffset,
-                            mTimeFormat, mLogDir, mLogPrefix, mLogSegment);
+                            mTimeFormat,mParentDir, mLogDir, mLogPrefix, mLogSegment);
                 }
                 break;
             case LogLevel.JSON:
@@ -320,7 +327,7 @@ public class Logger {
                 }
                 if (isWriteToFile && mWriteFileLevels.contains(level)) {
                     mJsonPrinter.printFile(mContext, level, tag, logMsg, element, mZoneOffset,
-                            mTimeFormat, mLogDir, mLogPrefix, mLogSegment);
+                            mTimeFormat,mParentDir, mLogDir, mLogPrefix, mLogSegment);
                 }
                 break;
             default:
@@ -376,7 +383,8 @@ public class Logger {
         @LogSegment
         private int mLogSegment;
         private String mName;
-        private String mLogDir;
+        private String parentDir;//日志文件父目录名称不设置默认Logger
+        private String mLogDir;//日志文件夹名称
         private boolean isWriteToFile;
         private boolean mDebug;
         @ZoneOffset
@@ -393,6 +401,7 @@ public class Logger {
             mLogSegment = LogSegment.TWENTY_FOUR_HOURS;
             mName = name;
             mDebug = true;
+            parentDir = "maikel";
             mLogDir = "Logger";
             isWriteToFile = false;
             mZoneOffset = ZoneOffset.P0800;
@@ -407,19 +416,22 @@ public class Logger {
             mStoreDays = 7;
         }
 
-        public static Builder newBuilder(Context context, String name) {
-            return new Builder(context, name);
-        }
-
         public static Builder newBuilder(String name) {
             return new Builder(null, name);
+        }
+
+        public static Builder newBuilder(Context context, String name) {
+            return new Builder(context, name);
         }
 
         public Builder setLogSegment(@LogSegment int segment) {
             this.mLogSegment = segment;
             return this;
         }
-
+        public Builder setParentDir(String parentDir){
+            this.parentDir = parentDir;
+            return this;
+        }
         public Builder setLogDir(String dir) {
             this.mLogDir = dir;
             return this;

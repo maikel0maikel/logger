@@ -16,6 +16,6 @@ public interface IPrinter {
     void printConsole(@LogLevel String level, String tag, String message, StackTraceElement element);
 
     void printFile(@NonNull Context context, @LogLevel String level, String tag, String message, StackTraceElement element,
-                   @ZoneOffset long offset, SimpleDateFormat timeFormat, String logDir, String logPrefix, @LogSegment int logSegment);
+                   @ZoneOffset long offset, SimpleDateFormat timeFormat,String parentDir,String logDir, String logPrefix, @LogSegment int logSegment);
 
 }
