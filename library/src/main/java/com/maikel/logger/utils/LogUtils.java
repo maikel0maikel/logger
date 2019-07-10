@@ -114,6 +114,7 @@ public class LogUtils {
                         writer.flush();
                     }
                 } catch (IOException e) {
+                    Log.e(TAG,"日志内容："+content);
                     Log.e(TAG, "写日志异常", e);
                 } finally {
                     IOUtils.closeQuietly(fos);

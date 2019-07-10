@@ -41,7 +41,7 @@ uploadArchives {
         pom.project {
             groupId "com.maikel" //groupId:artifactId:version
             artifactId "logger" //LibA
-            version "1.0.6"
+            version "1.0.7"
         }
     }
 }
