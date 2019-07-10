@@ -63,12 +63,12 @@ public class AppCrashHandler implements Thread.UncaughtExceptionHandler {
                 Looper.loop();
             }
         }.start();
-        if (listener != null) listener.onException();
+        if (listener != null) listener.onException(ex.getMessage());
         return true;
     }
 
     public interface UncaughtExceptionListener {
-        void onException();
+        void onException(String exception);
     }
 
     public void setUncaughtExceptionListener(UncaughtExceptionListener listener) {
