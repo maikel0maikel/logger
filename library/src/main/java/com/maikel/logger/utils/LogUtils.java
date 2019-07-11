@@ -133,6 +133,9 @@ public class LogUtils {
      * @return 日志目录路径
      */
     public static String genDirPath(@NonNull String parentDir,@NonNull String logDir) {
+        if (parentDir.contains("/")){
+            return parentDir+File.separator+logDir;
+        }
         return Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + parentDir
                 + File.separator + logDir;
     }
