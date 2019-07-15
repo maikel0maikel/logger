@@ -1,7 +1,6 @@
 package com.maikel.logger.crash.app;
 
 import android.os.Looper;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.maikel.logger.LogTools;

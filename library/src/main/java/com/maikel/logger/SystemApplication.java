@@ -1,12 +1,13 @@
 package com.maikel.logger;
 
+import android.app.Application;
 import android.content.Context;
 
 import com.maikel.logger.constant.LogLevel;
 import com.maikel.logger.constant.LogSegment;
 import com.maikel.logger.crash.app.AppCrashHandler;
 
-public class SystemApplication extends android.support.multidex.MultiDexApplication{
+public class SystemApplication extends Application {
     private static Context mContext;
     private static Logger sLogger;
     @Override
